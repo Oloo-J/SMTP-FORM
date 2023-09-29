@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Form</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Form</h1>
+        <form method="post">
+            <input id="name" type="text" name="Name" placeholder="Full Name" required>
+            <input id="email" type="email" name="Email" placeholder="Email" required>
+            <input id="phone" type="text" name="Phone" placeholder="Phone Number" required>
+            <textarea id="message" name="Message" placeholder="Message" required></textarea>
+            <button id="btn" type="submit">Send</button>
+        </form>
+    </div>
+    <script src=" https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+        let btn = document.getElementById('btn');
+        btn.addEventListener('click', function(e){
+            e.preventDefault()
+            
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let phone = document.getElementById('phone').value;
+            let message = document.getElementById('message').value;
+            let body = 'name: ' + name + '<br/> email: ' + email + '<br/> phone: ' + phone + '<br/> message: ' + message;
+
+
+            Email.send({
+                SecureToken : "d5dfa909-ecaf-4b0b-9268-fcb7fcfc9d9d",
+                To : 'oloojulius07@gmail.com',
+                From : "oloojulius07@gmail.com",
+                Subject : "Contact Message",
+                Body : body
+            }).then(
+               message => alert(message)
+            );
+
+
+
+        })
+    </script>
+</body>
+</html>
